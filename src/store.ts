@@ -2,9 +2,16 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-export interface IStoreShape{}
+import { ILoginState } from './pages/login/Interfaces';
+import loginReducer from './pages/login/State';
 
-const rootReducer = combineReducers({});
+export interface IStoreShape{
+  login: ILoginState
+}
+
+const rootReducer = combineReducers({
+  login: loginReducer,
+});
 
 const middleware = [thunk, logger];
 
